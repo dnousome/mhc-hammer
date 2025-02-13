@@ -112,7 +112,7 @@ process HLAHD {
     """
     # get hlahd path
     echo "non local"
-    hlahd_path="/bin/hlahd/"
+    hlahd_path="/opt2/hlahd/hlahd.1.7.1/"
 
     bash \${hlahd_path}bin/hlahd.sh \
     ${args} \
@@ -168,7 +168,7 @@ process HLAHD {
     # Write versions to YAML file
     cat <<-END_VERSIONS > versions.yml
     "${task.process}":
-        HLAHD: \${HLAHD_VERSION}
+        HLAHD: "v1.7.1"
         bowtie2: \$(echo \$(bowtie2 --version 2>&1) | sed 's/^.*bowtie2-align-s version //; s/ .*\$//')
         R: \${R_VERSION}
         data.table: \${DT_VERSION}
@@ -176,3 +176,4 @@ process HLAHD {
     END_VERSIONS
     """
 }
+
